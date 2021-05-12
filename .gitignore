@@ -1,0 +1,6 @@
+venv
+__pycache__
+
+/data
+scores.json
+mnist.h5

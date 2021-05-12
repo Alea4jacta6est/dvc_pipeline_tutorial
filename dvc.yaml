@@ -1,0 +1,12 @@
+stages:
+  train_keras:
+    cmd: python src/train_keras.py
+    deps:
+    - src/train_keras.py
+  evaluate_keras:
+    cmd: python src/evaluate.py
+    deps:
+    - src/evaluate.py
+    metrics:
+    - scores.json:
+        cache: false

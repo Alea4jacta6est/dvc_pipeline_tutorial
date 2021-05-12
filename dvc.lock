@@ -1,0 +1,18 @@
+schema: '2.0'
+stages:
+  train_keras:
+    cmd: python src/train_keras.py
+    deps:
+    - path: src/train_keras.py
+      md5: 07ce2089a948547b15b6014a972188a6
+      size: 1408
+  evaluate_keras:
+    cmd: python src/evaluate.py
+    deps:
+    - path: src/evaluate.py
+      md5: a456fe98a78411df76aaca62234dcfa1
+      size: 716
+    outs:
+    - path: scores.json
+      md5: aac1860fc6f2eb6ec965684edb8e47c6
+      size: 52
