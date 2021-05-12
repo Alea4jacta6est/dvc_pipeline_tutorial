@@ -1,6 +1,6 @@
 venv
 __pycache__
-
+data.pickle
 /data
 scores.json
 mnist.h5

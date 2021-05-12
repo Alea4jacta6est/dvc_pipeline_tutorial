@@ -10,3 +10,7 @@ stages:
     metrics:
     - scores.json:
         cache: false
+  preprocess_mnist:
+    cmd: python src/preprocess.py
+    deps:
+    - src/preprocess.py

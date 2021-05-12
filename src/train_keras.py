@@ -4,10 +4,11 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 
-from preprocess import x_train, y_test, x_test, y_train, input_shape
+from preprocess import get_processed_data
 
 
 def create_model(num_classes):
+    input_shape = (28, 28, 1)
     model = Sequential()
     model.add(Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=input_shape))
     model.add(Conv2D(64, (3, 3), activation='relu'))
@@ -27,6 +28,7 @@ def create_model(num_classes):
 @click.argument('num_classes', type=int, default=10)
 @click.argument('epochs', type=int, default=10)
 def train_and_save(num_classes,  batch_size, epochs, model_name='mnist.h5'):
+    x_train, y_train, x_test, y_test = get_processed_data()
     model = create_model(num_classes)
     hist = model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, verbose=1, validation_data=(x_test, y_test))
     print("The model has successfully trained")

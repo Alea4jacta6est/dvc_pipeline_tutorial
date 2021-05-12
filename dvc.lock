@@ -1,11 +1,17 @@
 schema: '2.0'
 stages:
+  preprocess_mnist:
+    cmd: python src/preprocess.py
+    deps:
+    - path: src/preprocess.py
+      md5: 1663239c9848bac1260c1bc281b4a04c
+      size: 1868
   train_keras:
     cmd: python src/train_keras.py
     deps:
     - path: src/train_keras.py
-      md5: 07ce2089a948547b15b6014a972188a6
-      size: 1408
+      md5: ccf42d88988d86550136dbbebb4fbb60
+      size: 1471
   evaluate_keras:
     cmd: python src/evaluate.py
     deps:
