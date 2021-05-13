@@ -1,37 +1,25 @@
+import os
+
+import click
 import keras
 from keras.datasets import mnist
-import pickle
-import os
-import click
 
-def singleton(cls):
-    instances = {}
+from handlers import pickler
 
-    def get_instance(*args, **kwargs):
-        if cls not in instances:
-            instances[cls] = cls(*args, **kwargs)
-        return instances[cls]
-
-    return get_instance
-
-@singleton
-class Pickler:
-    @staticmethod
-    def save(filename, data):
-        with open(f"{filename}", "wb") as file:
-            pickle.dump(data, file, protocol=pickle.HIGHEST_PROTOCOL)
-    
-    @staticmethod
-    def read(filename):
-        with open(f"{filename}", "rb") as file:
-            data = pickle.load(file)
-        return data
 
 @click.command()
-@click.argument('save_data_path', type=str, default="data.pickle")
+@click.argument('save_data_path', type=str, default="data/data.pickle")
 def get_and_preprocess_data(save_data_path, num_classes = 10):
-    pickler = Pickler()
-    path = os.getcwd()+"/data"
+    """Get data if not cached in dir, preprocess given data
+
+    Args:
+        save_data_path (str): path to save preprocessed data
+        num_classes (int): classes number; defaults to 10.
+
+    Returns:
+        x_train, y_train, x_test, y_test: data slices
+    """
+    path = os.getcwd()+"/data/mnist_data"
     (x_train, y_train), (x_test, y_test) = mnist.load_data(path)
     x_train = x_train.reshape(x_train.shape[0], 28, 28, 1)
     x_test = x_test.reshape(x_test.shape[0], 28, 28, 1)
@@ -49,8 +37,7 @@ def get_and_preprocess_data(save_data_path, num_classes = 10):
         pickler.save(save_data_path, processed_data)
     return x_train, y_train, x_test, y_test
 
-def get_processed_data(filename="data.pickle"):
-    pickler = Pickler()
+def get_processed_data(filename="data/data.pickle"):
     data_dict = pickler.read(filename)
     x_train, y_train = data_dict["x_train"], data_dict["y_train"]
     x_test, y_test = data_dict["x_test"], data_dict["y_test"]

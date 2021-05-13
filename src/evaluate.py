@@ -1,14 +1,21 @@
-from keras.models import load_model
-import click
 import json
+import click
+from keras.models import load_model
 
-from preprocess import x_test, y_test
+from preprocess import get_processed_data
  
 
 @click.command()
-@click.argument('model_name', type=str, default='mnist.h5')
-@click.argument('save_filename', type=str, default='scores.json')
+@click.argument('model_name', type=str, default='models/mnist_model_5.h5')
+@click.argument('save_filename', type=str, default='reports/scores.json')
 def get_and_save_scores(model_name, save_filename):
+    """Gets cached test data, loads model and counts scores
+
+    Args:
+        model_name ([type]): [description]
+        save_filename ([type]): [description]
+    """
+    _, _, x_test, y_test = get_processed_data()
     model = load_model(model_name)
     score = model.evaluate(x_test, y_test, verbose=0)
     final_scores = {'Test loss': round(score[0], 2), 
