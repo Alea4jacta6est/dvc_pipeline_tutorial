@@ -1,3 +1,4 @@
+import os
 import json
 import click
 from keras.models import load_model
@@ -15,6 +16,7 @@ def get_and_save_scores(model_name, save_filename):
         model_name ([type]): [description]
         save_filename ([type]): [description]
     """
+    
     _, _, x_test, y_test = get_processed_data()
     model = load_model(model_name)
     score = model.evaluate(x_test, y_test, verbose=0)
@@ -22,6 +24,7 @@ def get_and_save_scores(model_name, save_filename):
                     'Test accuracy': round(score[1], 2)}
     print(final_scores)
     if save_filename:
+        os.mkdir("reports")
         with open(save_filename, "w") as file:
             json.dump(final_scores, file, indent=4, ensure_ascii=False)
 

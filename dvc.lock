@@ -24,9 +24,9 @@ stages:
     cmd: python src/evaluate.py
     deps:
     - path: src/evaluate.py
-      md5: c280dbdc135bec0c82a895ab8d281bdf
-      size: 959
+      md5: f4237bfff88c1c30a91cefb2eea53442
+      size: 1002
     outs:
     - path: reports/scores.json
-      md5: 3e65fabf9422bc69ba8b875cc1e929d0
-      size: 51
+      md5: dc589ca1e2046f734faa4b9f2076f938
+      size: 52
