@@ -4,3 +4,4 @@ data.pickle
 mnist_data
 reports
 *.h5
+*.joblib

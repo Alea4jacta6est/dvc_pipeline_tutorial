@@ -6,15 +6,17 @@
 
 2. Activate venv and `pip install -r requirements.txt` to install dependencies 
 
-3. Use `dvc pull` and `dvc repro` to reproduce the pipeline (ask me for access to use data from remote)
+3. Use `pip install 'dvc[gdrive]'` to add gdrive 
 
-4. Use `dvc metrics show` to get metrics of the last model
+4. Use `dvc pull` and `dvc repro` to reproduce the pipeline (ask me for access to use data from remote)
+
+5. Use `dvc metrics show` to get metrics of the models
 
 ## Task description
 
 Data governance for ML (DVC)
 
-- Task description:
+- Details:
     1. Use dataset from previous task. Make initial setup using `Data version control` tool.
     2. Define 2-3 pipelines that would preprocess data in different ways (basic
     cleaning, scaling, aggregations, etc.). Each pipeline should be

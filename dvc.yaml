@@ -9,11 +9,20 @@ stages:
     cmd: python src/train_keras.py
     deps:
     - src/train_keras.py
+    - data/data.pickle
     outs:
     - models/mnist_model_5.h5
-  evaluate_keras:
-    cmd: python src/evaluate.py
+  train_tree:
+    cmd: python src/train_forest.py
     deps:
+    - src/train_forest.py
+    - data/data.pickle
+    outs:
+    - models/random_forest_500.joblib
+  evaluate:
+    cmd: python src/evaluate.py models/
+    deps:
+    - models/
     - src/evaluate.py
     metrics:
     - reports/scores.json:
