@@ -5,3 +5,4 @@ mnist_data
 reports
 *.h5
 *.joblib
+.DS_Store

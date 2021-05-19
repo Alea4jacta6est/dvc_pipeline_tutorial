@@ -6,7 +6,7 @@ from preprocess import get_processed_data
 
 
 @click.command()
-@click.argument('n_estimators', type=int, default=500)
+@click.argument('n_estimators', type=int, default=50)
 def train_and_save_tree(n_estimators):
     """Trains RFC and saves it as a joblib file
 

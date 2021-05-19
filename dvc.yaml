@@ -18,7 +18,7 @@ stages:
     - src/train_forest.py
     - data/data.pickle
     outs:
-    - models/random_forest_500.joblib
+    - models/random_forest_50.joblib
   evaluate:
     cmd: python src/evaluate.py models/
     deps:

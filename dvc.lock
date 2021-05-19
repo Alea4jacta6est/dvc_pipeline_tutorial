@@ -23,16 +23,6 @@ stages:
     - path: models/mnist_model_5.h5
       md5: 8cd5424dfd8e488ffa6703e63f3b6717
       size: 28614592
-  evaluate_keras:
-    cmd: python src/evaluate.py
-    deps:
-    - path: src/evaluate.py
-      md5: f4237bfff88c1c30a91cefb2eea53442
-      size: 1002
-    outs:
-    - path: reports/scores.json
-      md5: dc589ca1e2046f734faa4b9f2076f938
-      size: 52
   train_tree:
     cmd: python src/train_forest.py
     deps:
@@ -40,32 +30,23 @@ stages:
       md5: 189b035b9612f4d53293a7be51df3486
       size: 222320349
     - path: src/train_forest.py
-      md5: 1e1aace24784a9fe58d4f5abd3940890
-      size: 715
+      md5: de0ac02b7a3ec6d343fcb24e1ed7cb24
+      size: 719
     outs:
-    - path: models/random_forest_500.joblib
-      md5: 38e968db772d7962d855ab9a13680fb6
-      size: 1080848906
-  evaluate_tree:
-    cmd: python src/evaluate.py models/random_forest_500.joblib
-    deps:
-    - path: models/random_forest_500.joblib
-      md5: 38e968db772d7962d855ab9a13680fb6
-      size: 1080848906
-    - path: src/evaluate.py
-      md5: df71479d21934775b6c22dcc43f28c2e
-      size: 1875
+    - path: models/random_forest_50.joblib
+      md5: c8338ebb691a847bf661b67d0bbd794f
+      size: 107849419
   evaluate:
     cmd: python src/evaluate.py models/
     deps:
     - path: models/
-      md5: b1d94d11b6119a204b35099f1d91ac5a.dir
-      size: 1109463498
+      md5: e716bd483b9ccd062e38f511cd8b1784.dir
+      size: 136464011
       nfiles: 2
     - path: src/evaluate.py
       md5: 45c483cfd4bdbca68e79c180a1f92ce9
       size: 2052
     outs:
     - path: reports/scores.json
-      md5: 51e90951686646e55c4f72667f6f2dff
-      size: 70
+      md5: c297e021fc0414c2c29912b9480bf440
+      size: 69
