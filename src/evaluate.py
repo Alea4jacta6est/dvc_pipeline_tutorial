@@ -5,7 +5,7 @@ from keras.models import load_model
 from sklearn.metrics import accuracy_score
 import joblib
 
-from preprocess import get_processed_data
+from src.preprocess import get_processed_data
  
 
 def add_metrics_to_json(save_filename, updated_scores):
@@ -54,6 +54,8 @@ def get_and_save_scores(model_path, save_filename):
         
         if save_filename:
             add_metrics_to_json(save_filename, final_scores)
+    
+    return final_scores
 
 if __name__ == "__main__":
     get_and_save_scores()

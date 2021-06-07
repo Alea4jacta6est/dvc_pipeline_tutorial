@@ -2,11 +2,11 @@ import click
 import joblib
 from sklearn.ensemble import RandomForestClassifier
 
-from preprocess import get_processed_data
+from src.preprocess import get_processed_data
 
 
 @click.command()
-@click.argument('n_estimators', type=int, default=50)
+@click.argument('n_estimators', type=int)
 def train_and_save_tree(n_estimators):
     """Trains RFC and saves it as a joblib file
 

@@ -6,3 +6,4 @@ reports
 *.h5
 *.joblib
 .DS_Store
+mlruns

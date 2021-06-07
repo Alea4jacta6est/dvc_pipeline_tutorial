@@ -4,7 +4,7 @@ import click
 import keras
 from keras.datasets import mnist
 
-from handlers import pickler
+from src.handlers import pickler
 
 
 @click.command()

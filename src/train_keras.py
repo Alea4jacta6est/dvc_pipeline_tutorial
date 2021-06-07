@@ -3,7 +3,7 @@ import keras
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D
 
-from preprocess import get_processed_data
+from src.preprocess import get_processed_data
 
 
 def create_keras_model(num_classes):
@@ -34,7 +34,7 @@ def create_keras_model(num_classes):
 @click.command()
 @click.argument('batch_size', type=int, default=128)
 @click.argument('num_classes', type=int, default=10)
-@click.argument('epochs', type=int, default=5)
+@click.argument('epochs', type=int, default=1)
 def train_and_save(num_classes,  batch_size, epochs):
     """Trains created model with given number of epochs, batch size etc.
 
@@ -46,11 +46,11 @@ def train_and_save(num_classes,  batch_size, epochs):
     model_name = f'models/mnist_model_{epochs}.h5'
     x_train, y_train, x_test, y_test = get_processed_data()
     model = create_keras_model(num_classes)
-    hist = model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, verbose=1, validation_data=(x_test, y_test))
+    model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, verbose=1, validation_data=(x_test, y_test))
     print("The model has been successfully trained")
     model.save(model_name)
     print(f"Saving the model as {model_name}")
-    print(hist)
+    return model
 
 
 if __name__ == "__main__":
