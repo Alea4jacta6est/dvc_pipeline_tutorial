@@ -7,9 +7,7 @@ from keras.datasets import mnist
 from src.handlers import pickler
 
 
-@click.command()
-@click.argument('save_data_path', type=str, default="data/data.pickle")
-def get_and_preprocess_data(save_data_path, num_classes = 10):
+def get_and_preprocess_data(save_data_path = "data/data.pickle", num_classes = 10):
     """Get data if not cached in dir, preprocess given data
 
     Args:

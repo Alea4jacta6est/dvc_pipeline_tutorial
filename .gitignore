@@ -7,3 +7,4 @@ reports
 *.joblib
 .DS_Store
 mlruns
+secrets

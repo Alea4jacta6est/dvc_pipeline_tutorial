@@ -6,3 +6,4 @@ dvc==2.1.0
 joblib==1.0.1
 scikit-learn==0.24.2
 mlflow==1.17
+google-cloud-storage==1.38.0

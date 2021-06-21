@@ -31,10 +31,6 @@ def create_keras_model(num_classes):
                   metrics=['accuracy'])
     return model
 
-@click.command()
-@click.argument('batch_size', type=int, default=128)
-@click.argument('num_classes', type=int, default=10)
-@click.argument('epochs', type=int, default=1)
 def train_and_save(num_classes,  batch_size, epochs):
     """Trains created model with given number of epochs, batch size etc.
 
@@ -50,7 +46,7 @@ def train_and_save(num_classes,  batch_size, epochs):
     print("The model has been successfully trained")
     model.save(model_name)
     print(f"Saving the model as {model_name}")
-    return model
+    return model, model_name
 
 
 if __name__ == "__main__":

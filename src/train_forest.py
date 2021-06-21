@@ -5,8 +5,6 @@ from sklearn.ensemble import RandomForestClassifier
 from src.preprocess import get_processed_data
 
 
-@click.command()
-@click.argument('n_estimators', type=int)
 def train_and_save_tree(n_estimators):
     """Trains RFC and saves it as a joblib file
 
@@ -18,7 +16,9 @@ def train_and_save_tree(n_estimators):
     x_train = x_train.reshape((nsamples, nx*ny))
     forest = RandomForestClassifier(n_estimators = n_estimators)
     forest = forest.fit(x_train, y_train)
-    joblib.dump(forest, f"models/random_forest_{n_estimators}.joblib")
+    model_name = f"models/random_forest_{n_estimators}.joblib"
+    joblib.dump(forest, model_name)
+    return forest, model_name 
     
 if __name__ == "__main__":
     train_and_save_tree()

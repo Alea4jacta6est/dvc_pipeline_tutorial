@@ -1,7 +1,7 @@
 entry_points:
     main:
         parameters:
-            batch_size: str
-            num_classes: str
-            epochs: str
+            batch_size: int
+            num_classes: int
+            epochs: int
         command: python main.py
