@@ -31,7 +31,7 @@ def create_keras_model(num_classes):
                   metrics=['accuracy'])
     return model
 
-def train_and_save(num_classes,  batch_size, epochs):
+def train_and_save(num_classes=10,  batch_size=128, epochs=5):
     """Trains created model with given number of epochs, batch size etc.
 
     Args:

@@ -33,3 +33,28 @@ Data governance for ML (DVC)
 - Materials:
     - [DVC documentation and tutorials](https://dvc.org/doc/start)
     - [DVC video tutorials](https://www.youtube.com/channel/UC37rp97Go-xIX3aNFVHhXfQ/videos)
+
+________________________________
+
+## How to run airflow?
+
+1) Go to the cloned repo: `export AIRFLOW_HOME=$(pwd)`
+
+2) Create a user
+
+- airflow users create \
+          --username admin \
+          --firstname Name \
+          --lastname Lastname \
+          --role Admin \
+          --email email
+
+3) Activate airflow components 
+
+- `airflow db init`
+
+- `airflow scheduler -D # kill later ill $(lsof -t -i:8793)`
+
+- `airflow webserver`
+
+4) Run MNIST Machine Learning pipeline

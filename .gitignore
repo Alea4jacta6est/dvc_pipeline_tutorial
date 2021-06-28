@@ -8,3 +8,11 @@ reports
 .DS_Store
 mlruns
 secrets
+*.log
+*.pid
+*.out
+*.err
+logs
+*.cfg
+*.db
+webserver_config.py

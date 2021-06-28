@@ -5,7 +5,7 @@ from sklearn.ensemble import RandomForestClassifier
 from src.preprocess import get_processed_data
 
 
-def train_and_save_tree(n_estimators):
+def train_and_save_tree(n_estimators=50):
     """Trains RFC and saves it as a joblib file
 
     Args:
