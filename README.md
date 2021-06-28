@@ -42,18 +42,13 @@ ________________________________
 
 2) Create a user
 
-- airflow `users create \`
-          `--username admin \`
-          `--firstname Name \`
-          `--lastname Lastname \`
-          `--role Admin \`
-          `--email email`
+- airflow `users create --username admin --firstname Name --lastname Lastname --role Admin --email email`
 
 3) Activate airflow components 
 
 - `airflow db init`
 
-- `airflow scheduler -D` (`kill later ill $(lsof -t -i:8793)`)
+- `airflow scheduler -D` (kill later `kill $(lsof -t -i:8793)`)
 
 - `airflow webserver`
 
