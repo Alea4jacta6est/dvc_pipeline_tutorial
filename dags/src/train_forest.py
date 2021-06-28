@@ -1,4 +1,3 @@
-import click
 import joblib
 from sklearn.ensemble import RandomForestClassifier
 

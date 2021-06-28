@@ -1,7 +1,11 @@
 from datetime import timedelta
 from airflow import DAG
-from airflow.operators.bash import BashOperator
+from airflow.operators.python import PythonOperator, PythonVirtualenvOperator
 from airflow.utils.dates import days_ago
+
+from src.train_keras import train_and_save
+from src.train_forest import train_and_save_tree
+from src.evaluate import get_and_save_scores
 
 
 default_args = {
@@ -21,24 +25,24 @@ dag = DAG(
         description='MNIST Machine Learning pipeline',
         schedule_interval=timedelta(days=30))
 
-train_keras = BashOperator(
+train_keras = PythonOperator(
                     task_id='train_keras',
                     depends_on_past=False,
-                    bash_command='python src/train_keras.py',
+                    python_callable=train_and_save,
                     retries=2,
                     dag=dag,
                     )
-train_rfc = BashOperator(
+train_rfc = PythonOperator(
                     task_id='train_RFC',
                     depends_on_past=False,
-                    bash_command='python src/train_forest.py',
+                    python_callable=train_and_save_tree,
                     retries=2,
                     dag=dag,
                 )
-count_scores = BashOperator(
+count_scores = PythonOperator(
                         task_id='count_scores',
                         depends_on_past=False,
-                        bash_command='python src/evaluate.py',
+                        python_callable=get_and_save_scores,
                         retries=2,
                         dag=dag,
     )
