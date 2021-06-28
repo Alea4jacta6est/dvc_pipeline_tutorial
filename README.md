@@ -42,7 +42,7 @@ ________________________________
 
 2) Create a user
 
-- airflow `users create --username admin --firstname Name --lastname Lastname --role Admin --email email`
+- `airflow users create --username admin --firstname Name --lastname Lastname --role Admin --email email`
 
 3) Activate airflow components 
 
